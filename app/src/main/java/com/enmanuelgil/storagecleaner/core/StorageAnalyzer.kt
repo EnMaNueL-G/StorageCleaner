@@ -77,16 +77,26 @@ object StorageAnalyzer {
 
         for (dir in searchDirs) {
             if (!dir.exists()) continue
-            dir.walkTopDown().maxDepth(3).forEach { file ->
-                if (file.isFile && file.extension.lowercase() == "apk") {
-                    items.add(StorageItem(
-                        path      = file.absolutePath,
-                        name      = file.name,
-                        sizeBytes = file.length(),
-                        type      = ItemType.APK
-                    ))
-                }
-            }
+            try {
+                dir.walkTopDown()
+                    .maxDepth(3)
+                    .onEnter { subDir ->
+                        try { subDir.canRead() } catch (_: Exception) { false }
+                    }
+                    .forEach { file ->
+                        try {
+                            if (file.isFile && file.extension.lowercase() == "apk") {
+                                items.add(StorageItem(
+                                    path      = file.absolutePath,
+                                    name      = file.name,
+                                    sizeBytes = file.length(),
+                                    type      = ItemType.APK
+                                ))
+                            }
+                        } catch (_: Exception) {}
+                    }
+            } catch (_: SecurityException) {}
+              catch (_: Exception) {}
         }
 
         return StorageCategory(
@@ -104,16 +114,21 @@ object StorageAnalyzer {
         var total = 0L
 
         if (downloadsDir.exists()) {
-            downloadsDir.listFiles()?.forEach { file ->
-                val size = if (file.isDirectory) dirSize(file) else file.length()
-                total += size
-                items.add(StorageItem(
-                    path      = file.absolutePath,
-                    name      = file.name,
-                    sizeBytes = size,
-                    type      = if (file.isDirectory) ItemType.FOLDER else ItemType.FILE
-                ))
-            }
+            try {
+                downloadsDir.listFiles()?.forEach { file ->
+                    try {
+                        val size = if (file.isDirectory) dirSize(file) else file.length()
+                        total += size
+                        items.add(StorageItem(
+                            path      = file.absolutePath,
+                            name      = file.name,
+                            sizeBytes = size,
+                            type      = if (file.isDirectory) ItemType.FOLDER else ItemType.FILE
+                        ))
+                    } catch (_: Exception) {}
+                }
+            } catch (_: SecurityException) {}
+              catch (_: Exception) {}
         }
 
         return StorageCategory(
@@ -154,9 +169,13 @@ object StorageAnalyzer {
 
     private fun dirSize(dir: File): Long {
         var size = 0L
-        dir.walkTopDown().forEach { file ->
-            if (file.isFile) size += file.length()
-        }
+        try {
+            dir.walkTopDown()
+                .onEnter { subDir -> try { subDir.canRead() } catch (_: Exception) { false } }
+                .forEach { file ->
+                    try { if (file.isFile) size += file.length() } catch (_: Exception) {}
+                }
+        } catch (_: Exception) {}
         return size
     }
 }
