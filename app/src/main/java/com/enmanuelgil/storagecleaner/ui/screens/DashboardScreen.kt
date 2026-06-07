@@ -1,6 +1,7 @@
 package com.enmanuelgil.storagecleaner.ui.screens
 
 import androidx.compose.animation.core.*
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -33,7 +34,8 @@ fun DashboardScreen(
     isCleaning: Boolean,
     lastResult: CleanResult?,
     onAnalyze: () -> Unit,
-    onClearCache: () -> Unit
+    onClearCache: () -> Unit,
+    onDismissResult: () -> Unit = {}
 ) {
     // Usar LazyColumn en lugar de Column+verticalScroll para evitar el bug de Compose SlotTable
     LazyColumn(
@@ -71,22 +73,37 @@ fun DashboardScreen(
             return@LazyColumn
         }
 
-        // Resultado de limpieza
+        // Confirmación de limpieza — siempre visible al completar (auto-cierre 4s)
         lastResult?.let { result ->
-            if (result.freedBytes > 0) {
-                item {
-                    Card(
-                        Modifier.fillMaxWidth(),
-                        colors = CardDefaults.cardColors(containerColor = CleanGreen.copy(alpha = 0.12f)),
-                        shape = RoundedCornerShape(16.dp)
+            item {
+                LaunchedEffect(result) {
+                    kotlinx.coroutines.delay(4000)
+                    onDismissResult()
+                }
+                Card(
+                    Modifier.fillMaxWidth(),
+                    colors = CardDefaults.cardColors(containerColor = CleanGreen.copy(alpha = 0.13f)),
+                    shape = RoundedCornerShape(16.dp),
+                    border = androidx.compose.foundation.BorderStroke(1.dp, CleanGreen.copy(alpha = 0.3f))
+                ) {
+                    Row(
+                        Modifier.padding(16.dp).fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(14.dp)
                     ) {
-                        Row(Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                            Icon(Icons.Default.CheckCircle, null, tint = CleanGreen, modifier = Modifier.size(28.dp))
-                            Column {
-                                Text("Limpieza completada", fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = TextPrimary)
-                                Text("${result.freedBytes.formatSize()} liberados", fontSize = 13.sp, color = CleanGreen)
-                            }
+                        Icon(Icons.Default.CheckCircle, null, tint = CleanGreen, modifier = Modifier.size(32.dp))
+                        Column(Modifier.weight(1f)) {
+                            Text(
+                                "✅ Limpieza completada",
+                                fontSize = 15.sp, fontWeight = FontWeight.Bold, color = TextPrimary
+                            )
+                            Text(
+                                result.message.ifEmpty { "Caché limpiada correctamente." },
+                                fontSize = 12.sp, color = CleanGreen, lineHeight = 17.sp
+                            )
+                        }
+                        IconButton(onClick = onDismissResult, modifier = Modifier.size(24.dp)) {
+                            Icon(Icons.Default.Close, null, tint = TextSecondary, modifier = Modifier.size(16.dp))
                         }
                     }
                 }

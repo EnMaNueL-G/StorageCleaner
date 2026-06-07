@@ -1,1 +1,52 @@
-﻿<?xml version="1.0" encoding="utf-8"?><vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108"><path android:fillColor="#2196F3" android:pathData="M30,25 L78,25 L78,83 L30,83 Z"/><path android:fillColor="#0D1117" android:pathData="M38,35 L70,35 L70,45 L38,45 Z"/><path android:fillColor="#0D1117" android:pathData="M38,50 L70,50 L70,55 L38,55 Z"/><path android:fillColor="#0D1117" android:pathData="M38,60 L58,60 L58,65 L38,65 Z"/><path android:fillColor="#66BB6A" android:pathData="M62,58 C67,58 71,62 71,67 C71,72 67,76 62,76 C57,76 53,72 53,67 C53,62 57,58 62,58 Z"/><path android:fillColor="#0D1117" android:pathData="M59,67 L61,69 L66,63"/></vector>
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  StorageCleaner — Icono EG
+  Diseño: Iniciales "EG" sobre disco circular con arco de limpieza.
+  Paleta: Azul #2196F3 + Teal #26C6DA sobre #0D1117
+  Único diferenciador: disco de almacenamiento con escoba/barrido circular
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+
+    <!-- Disco principal (círculo de almacenamiento) -->
+    <path
+        android:fillColor="#142030"
+        android:pathData="M54,16 C79,16 92,32 92,54 C92,76 79,92 54,92 C29,92 16,76 16,54 C16,32 29,16 54,16 Z" />
+
+    <!-- Anillo exterior azul -->
+    <path
+        android:fillColor="#2196F3"
+        android:pathData="M54,16 C79,16 92,32 92,54 C92,76 79,92 54,92 C29,92 16,76 16,54 C16,32 29,16 54,16 Z M54,22 C32,22 22,36 22,54 C22,72 32,86 54,86 C76,86 86,72 86,54 C86,36 76,22 54,22 Z"
+        android:fillAlpha="0.8"/>
+
+    <!-- Arco de limpieza / barrido (elemento único) -->
+    <path
+        android:fillColor="#26C6DA"
+        android:pathData="M54,22 C76,22 86,36 86,54 C86,63 82,71 76,77 L71,72 C76,67 80,61 80,54 C80,39 69,28 54,28 Z"
+        android:fillAlpha="0.9"/>
+
+    <!-- Punto central del disco -->
+    <path
+        android:fillColor="#2196F3"
+        android:pathData="M54,48 C57.3,48 60,50.7 60,54 C60,57.3 57.3,60 54,60 C50.7,60 48,57.3 48,54 C48,50.7 50.7,48 54,48 Z" />
+
+    <!-- "E" de Enmanuel — estilo limpio -->
+    <path
+        android:fillColor="#E8F4FD"
+        android:pathData="
+            M28,40 L28,68 L44,68 L44,63 L33,63 L33,56 L42,56 L42,51 L33,51 L33,45 L44,45 L44,40 Z" />
+
+    <!-- "G" de Gil — trazo diferenciado -->
+    <path
+        android:fillColor="#26C6DA"
+        android:pathData="
+            M63,40 Q52,40 52,54 Q52,68 63,68 L68,68 L70,68 L70,54 L62,54 L62,59 L65,59 L65,63 L63,63 Q57,63 57,54 Q57,45 63,45 Q67,45 69,48 L73,44 Q69,40 63,40 Z" />
+
+    <!-- Estrellita de brillo (limpieza efectuada) -->
+    <path
+        android:fillColor="#66BB6A"
+        android:pathData="M80,28 L81.5,31.5 L85,33 L81.5,34.5 L80,38 L78.5,34.5 L75,33 L78.5,31.5 Z"
+        android:fillAlpha="0.9"/>
+
+</vector>

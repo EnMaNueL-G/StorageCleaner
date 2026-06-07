@@ -54,7 +54,7 @@ fun AppContent(vm: MainViewModel) {
     val content: @Composable (PaddingValues) -> Unit = { pv ->
         Box(Modifier.fillMaxSize().background(BackgroundDark).padding(pv)) {
             when (tab) {
-                0 -> DashboardScreen(storage, isLoading, isCleaning, lastResult, vm::analyze, vm::clearCache)
+                0 -> DashboardScreen(storage, isLoading, isCleaning, lastResult, vm::analyze, vm::clearCache, vm::dismissResult)
                 1 -> SettingsScreen()
             }
         }
