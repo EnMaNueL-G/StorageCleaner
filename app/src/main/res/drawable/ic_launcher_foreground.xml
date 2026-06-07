@@ -1,52 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  StorageCleaner — Icono EG
-  Diseño: Iniciales "EG" sobre disco circular con arco de limpieza.
-  Paleta: Azul #2196F3 + Teal #26C6DA sobre #0D1117
-  Único diferenciador: disco de almacenamiento con escoba/barrido circular
+  StorageCleaner — Icono profesional v2
+  Concepto: Disco de almacenamiento (HDD platter) visto desde arriba con
+  sector de barrido cian (= zona limpiada) y destello de limpieza.
+  Sin texto. Lectura clara a cualquier tamaño.
+  Fondo en ic_launcher_background.xml (#0A1A2E — azul marino muy oscuro)
 -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="108dp" android:height="108dp"
-    android:viewportWidth="108" android:viewportHeight="108">
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
 
-    <!-- Disco principal (círculo de almacenamiento) -->
+    <!-- ── Sombra suave debajo del disco (profundidad) ──────────────────────── -->
     <path
-        android:fillColor="#142030"
-        android:pathData="M54,16 C79,16 92,32 92,54 C92,76 79,92 54,92 C29,92 16,76 16,54 C16,32 29,16 54,16 Z" />
-
-    <!-- Anillo exterior azul -->
-    <path
-        android:fillColor="#2196F3"
-        android:pathData="M54,16 C79,16 92,32 92,54 C92,76 79,92 54,92 C29,92 16,76 16,54 C16,32 29,16 54,16 Z M54,22 C32,22 22,36 22,54 C22,72 32,86 54,86 C76,86 86,72 86,54 C86,36 76,22 54,22 Z"
-        android:fillAlpha="0.8"/>
-
-    <!-- Arco de limpieza / barrido (elemento único) -->
-    <path
-        android:fillColor="#26C6DA"
-        android:pathData="M54,22 C76,22 86,36 86,54 C86,63 82,71 76,77 L71,72 C76,67 80,61 80,54 C80,39 69,28 54,28 Z"
-        android:fillAlpha="0.9"/>
-
-    <!-- Punto central del disco -->
-    <path
-        android:fillColor="#2196F3"
-        android:pathData="M54,48 C57.3,48 60,50.7 60,54 C60,57.3 57.3,60 54,60 C50.7,60 48,57.3 48,54 C48,50.7 50.7,48 54,48 Z" />
-
-    <!-- "E" de Enmanuel — estilo limpio -->
-    <path
-        android:fillColor="#E8F4FD"
+        android:fillColor="#000000"
+        android:fillAlpha="0.25"
         android:pathData="
-            M28,40 L28,68 L44,68 L44,63 L33,63 L33,56 L42,56 L42,51 L33,51 L33,45 L44,45 L44,40 Z" />
+          M54,20
+          C79.4,20 94,35.6 94,56
+          C94,78.9 77,96 54,96
+          C31,96 14,78.9 14,56
+          C14,33.1 28.6,20 54,20 Z" />
 
-    <!-- "G" de Gil — trazo diferenciado -->
+    <!-- ── Disco exterior — color azul profundo ──────────────────────────────── -->
     <path
-        android:fillColor="#26C6DA"
+        android:fillColor="#1565C0"
         android:pathData="
-            M63,40 Q52,40 52,54 Q52,68 63,68 L68,68 L70,68 L70,54 L62,54 L62,59 L65,59 L65,63 L63,63 Q57,63 57,54 Q57,45 63,45 Q67,45 69,48 L73,44 Q69,40 63,40 Z" />
+          M54,18
+          C79.4,18 92,34 92,54
+          C92,76.1 75.1,92 54,92
+          C32.9,92 16,76.1 16,54
+          C16,32.9 32.6,18 54,18 Z" />
 
-    <!-- Estrellita de brillo (limpieza efectuada) -->
+    <!-- ── Anillo medio (platina) — tono ligeramente más claro ─────────────── -->
     <path
-        android:fillColor="#66BB6A"
-        android:pathData="M80,28 L81.5,31.5 L85,33 L81.5,34.5 L80,38 L78.5,34.5 L75,33 L78.5,31.5 Z"
-        android:fillAlpha="0.9"/>
+        android:fillColor="#1976D2"
+        android:pathData="
+          M54,25
+          C74.4,25 85,38.6 85,54
+          C85,70.6 71.6,83 54,83
+          C36.4,83 23,70.6 23,54
+          C23,37.4 33.6,25 54,25 Z" />
+
+    <!-- ── Anillo interior (pista de datos) ─────────────────────────────────── -->
+    <path
+        android:fillColor="#1565C0"
+        android:pathData="
+          M54,33
+          C69.5,33 77,43.5 77,54
+          C77,65.5 68,75 54,75
+          C40,75 31,65.5 31,54
+          C31,42.5 38.5,33 54,33 Z" />
+
+    <!-- ── Sector "limpiado" — cuadrante superior derecho en cian ─────────────
+         Representa la zona barrida del disco (efecto de limpieza visual).
+         Geometría: triángulo desde el centro hacia el arco exterior.
+    -->
+    <path
+        android:fillColor="#00ACC1"
+        android:fillAlpha="0.88"
+        android:pathData="
+          M54,18
+          C70,18 83,27 89,40
+          L81,45
+          C77,35 66,25 54,25 Z" />
+
+    <!-- ── Brillo sobre sector limpiado ─────────────────────────────────────── -->
+    <path
+        android:fillColor="#4DD0E1"
+        android:fillAlpha="0.55"
+        android:pathData="
+          M70,19
+          C80,24 88,33 91,44
+          L84,47
+          C81,38 74,29 65,23 Z" />
+
+    <!-- ── Hueco central del disco (spindle) ────────────────────────────────── -->
+    <path
+        android:fillColor="#0A1A2E"
+        android:pathData="
+          M54,45
+          C59.5,45 63,49.5 63,54
+          C63,59.5 59.5,63 54,63
+          C48.5,63 45,59.5 45,54
+          C45,48.5 48.5,45 54,45 Z" />
+
+    <!-- ── Reflejo sutil izquierdo en el disco (material metálico) ─────────── -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.06"
+        android:pathData="
+          M16,54
+          C16,32.9 32.6,18 54,18
+          L54,25
+          C36.4,25 23,37.4 23,54 Z" />
+
+    <!-- ── Destello de estrella (símbolo universal de "limpio") ───────────────
+         4 puntas. Centro en (84, 22) — esquina superior derecha del disco.
+         Tamaño ajustado para ser visible pero elegante.
+    -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="
+          M84,13
+          L86.5,19.5
+          L93,22
+          L86.5,24.5
+          L84,31
+          L81.5,24.5
+          L75,22
+          L81.5,19.5 Z" />
+
+    <!-- ── Puntito secundario del destello ──────────────────────────────────── -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.6"
+        android:pathData="
+          M76,14
+          L77,17
+          L80,18
+          L77,19
+          L76,22
+          L75,19
+          L72,18
+          L75,17 Z" />
 
 </vector>
