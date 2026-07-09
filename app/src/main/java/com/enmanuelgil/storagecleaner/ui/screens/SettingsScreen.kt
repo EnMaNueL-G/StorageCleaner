@@ -56,9 +56,9 @@ fun SettingsScreen() {
                 Text("100% gratuita, sin anuncios, código abierto. Si recuperó espacio valioso en tu teléfono, considerá apoyar el desarrollo.",
                     fontSize = 13.sp, color = TextSecondary, lineHeight = 18.sp)
                 HorizontalDivider(color = TextSecondary.copy(alpha = 0.1f))
-                DonRow("Binance Pay ID", "1140153333") { clipboard.setText(AnnotatedString("1140153333")) }
-                DonRow("BSC BEP20", "0x0a9a0d8d816ede885d1d4a5c94369a72ef86b3c1") {
-                    clipboard.setText(AnnotatedString("0x0a9a0d8d816ede885d1d4a5c94369a72ef86b3c1"))
+                DonRow("Binance Pay ID", "1165745950") { clipboard.setText(AnnotatedString("1165745950")) }
+                DonRow("BSC BEP20", "0xb6f6731a4ea87f8e1fd6f44f48b5bc4204571f08") {
+                    clipboard.setText(AnnotatedString("0xb6f6731a4ea87f8e1fd6f44f48b5bc4204571f08"))
                 }
             }
         }
