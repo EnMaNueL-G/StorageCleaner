@@ -19,6 +19,8 @@ val TextSecondary  = Color(0xFF8B949E)
 
 private val DarkColors = darkColorScheme(
     primary      = CleanBlue,
+    onPrimary    = Color.White,
+    onSecondary  = Color.White,
     secondary    = CleanTeal,
     background   = BackgroundDark,
     surface      = SurfaceDark,

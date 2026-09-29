@@ -27,17 +27,17 @@ fun SettingsScreen() {
         modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        Text("Configuración", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = TextPrimary)
+        Text("Ajustes", fontSize = 22.sp, fontWeight = FontWeight.Bold, color = TextPrimary)
 
         // Info de uso
-        Text("Consejos de almacenamiento", fontSize = 13.sp, color = TextSecondary, fontWeight = FontWeight.SemiBold)
+        Text("Consejos que sí funcionan", fontSize = 13.sp, color = TextSecondary, fontWeight = FontWeight.SemiBold)
         Card(Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = CardDark), shape = RoundedCornerShape(16.dp)) {
             Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                TipItem("📦", "La caché de apps puede acumularse en GB con el tiempo — limpiala cada semana")
-                TipItem("📥", "Los APKs descargados quedan en tu teléfono aunque ya instalaras la app — bórralos")
-                TipItem("💬", "WhatsApp y Telegram guardan copias de todo lo recibido — revisa periodicamente")
-                TipItem("🗑", "Vacía la papelera de Fotos de Google — retiene archivos 60 días por defecto")
-                TipItem("🔄", "Las apps de Google Play guardan datos de instalaciones anteriores")
+                TipItem("📥", "Los APK de apps que ya tienes instaladas no sirven para nada: bórralos (pestaña Archivos)")
+                TipItem("💬", "WhatsApp y Telegram guardan todo lo recibido: revisa sus vídeos en Archivos grandes y duplicados")
+                TipItem("🗑", "Fotos y la Galería guardan lo borrado en su papelera 30-60 días: vacíala desde la propia app")
+                TipItem("☁️", "Las fotos ya subidas a la nube se pueden quitar del móvil desde la app de Fotos («Liberar espacio»)")
+                TipItem("🧊", "La caché vuelve a crecer al usar las apps; borrarla a diario no ayuda. Úsalo cuando te quedes sin espacio")
             }
         }
 
@@ -53,7 +53,7 @@ fun SettingsScreen() {
                     Icon(Icons.Default.Favorite, contentDescription = null, tint = CleanOrange)
                     Text("¿Te fue útil StorageCleaner?", fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = TextPrimary)
                 }
-                Text("100% gratuita, sin anuncios, código abierto. Si recuperó espacio valioso en tu teléfono, considerá apoyar el desarrollo.",
+                Text("100 % gratis, sin anuncios y de código abierto. Si te ayudó a recuperar espacio, puedes apoyar el desarrollo.",
                     fontSize = 13.sp, color = TextSecondary, lineHeight = 18.sp)
                 HorizontalDivider(color = TextSecondary.copy(alpha = 0.1f))
                 DonRow("Binance Pay ID", "1165745950") { clipboard.setText(AnnotatedString("1165745950")) }
@@ -67,12 +67,12 @@ fun SettingsScreen() {
         Text("Acerca de", fontSize = 13.sp, color = TextSecondary, fontWeight = FontWeight.SemiBold)
         Card(Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = CardDark), shape = RoundedCornerShape(16.dp)) {
             Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                InfoRow2("Versión", "1.0.0")
-                InfoRow2("Desarrollado por", "Enmanuel Gil")
+                InfoRow2("Versión", "1.1.0")
+                InfoRow2("Desarrollado por", "Enmanuel Gil · OptiSuite")
                 InfoRow2("Compatibilidad", "Android 8.0+ (API 26)")
-                InfoRow2("Sin dependencias", "No requiere root")
+                InfoRow2("Root", "No hace falta")
                 HorizontalDivider(color = TextSecondary.copy(alpha = 0.1f))
-                Text("No recopila datos personales. No requiere internet.", fontSize = 12.sp, color = TextSecondary)
+                Text("Sin permiso de Internet: no puede enviar nada fuera del móvil. No recopila datos.", fontSize = 12.sp, color = TextSecondary)
             }
         }
         Spacer(Modifier.height(80.dp))

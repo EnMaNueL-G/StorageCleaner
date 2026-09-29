@@ -5,3 +5,7 @@
 /build
 app/build/
 app/release/*.jks
+keystore.properties
+*.apk
+dist/
+app/release/
